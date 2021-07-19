@@ -1,6 +1,11 @@
+
+
+#function to identify objects
 def objectdet():
     import cv2
     img = cv2.imread(file)
+
+    #creating a list of class names available in the database
 
     classNames= []
     classFile = 'coco.names'
@@ -17,7 +22,6 @@ def objectdet():
     net.setInputMean((127.5, 127.5, 127.5))
     net.setInputSwapRB(True)
 
-
     classIds, confs, bbox = net.detect(img,confThreshold=0.5)
     print(classIds,bbox)
 
@@ -32,6 +36,8 @@ def objectdet():
 
         cv2.imshow("Output",img)
         cv2.waitKey(0)
+
+#main program
 
 file = input("Enter the File Name with Extension")
 objectdet()
